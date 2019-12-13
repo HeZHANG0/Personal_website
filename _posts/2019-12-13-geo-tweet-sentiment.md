@@ -1,8 +1,8 @@
 ---
-title: "Example: Embedding Matplotlib Images"
-date: 2019-04-17
+title: "Attitude and space-sentiment analysis of geo-located tweets"
+date: 2019-12-13
 published: true
-tags: [dataviz, altair, hvplot, holoviews]
+tags: [dataviz, altair, hvplot, holoviews,tweet]
 excerpt: "This is an example blog post"
 toc: true
 toc_sticky: true

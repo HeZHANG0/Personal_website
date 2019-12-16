@@ -4,6 +4,11 @@ date: 2019-12-13
 published: true
 tags: [dataviz, geopandas, hvplot, holoviews, tweet, sentiment analysis, park, San Francisco]
 excerpt: "Parks & open spaces and user sentiment: A case study of San Francisco using Twitter data"
+folium-loader:
+  folium-chart-1: ["charts/local_tweet_heat_map.html", "400"]
+
+custom-css-list:
+  - "assets/css/leaflet.timedimension.control.min.css"
 toc: true
 toc_sticky: true
 ---
@@ -28,6 +33,13 @@ I obtained the park geometry, park score, and city boundary data from the open d
 ![sf_parks]({{ site.url }}{{ site.baseurl }}/charts/sf_parks.png)
 
 ## Exploratory analysis
+### Classify in-park and outside-park tweets
+Where do people tweet:
+<div id="folium-chart-1"></div>
+I classified “in-park” tweets by spatially joining park information to the tweets . In this way, 2093 tweets were classified as “in-park”.
+### Twitter text EDA
+
+
 
 ## Sentiment analysis
 

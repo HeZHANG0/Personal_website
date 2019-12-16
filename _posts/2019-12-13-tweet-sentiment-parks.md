@@ -6,12 +6,12 @@ tags: [dataviz, geopandas, hvplot, holoviews, tweet, sentiment analysis, park, S
 excerpt: "Parks & open spaces and user sentiment: A case study of San Francisco using Twitter data"
 folium-loader:
   folium-chart-1: ["charts/local_tweet_heat_map.html", "400"]
-  folium-chart-2: ["charts/positive_count_in_outside_park.html", "200"]
-  folium-chart-3: ["charts/negative_count_in_outside_park.html", "200"]
-  folium-chart-4: ["charts/polarity_in_outside_park.html", "200"]
-  folium-chart-5: ["charts/subjectivity_in_outside_park.html", "200"]
-  folium-chart-6: ["charts/by_time_polarity_in_outside_park.html", "200"]
-  folium-chart-7: ["charts/by_time_subjectivity_in_outside_park.html", "200"]
+  folium-chart-2: ["charts/positive_count_in_outside_park.html", "400"]
+  folium-chart-3: ["charts/negative_count_in_outside_park.html", "400"]
+  folium-chart-4: ["charts/polarity_in_outside_park.html", "400"]
+  folium-chart-5: ["charts/subjectivity_in_outside_park.html", "400"]
+  folium-chart-6: ["charts/by_time_polarity_in_outside_park.html", "400"]
+  folium-chart-7: ["charts/by_time_subjectivity_in_outside_park.html", "400"]
   folium-chart-8: ["charts/negative_tweet_heat_map.html", "400"]
   folium-chart-9: ["charts/very_positive_tweet_heat_map.html", "400"]
 
@@ -95,7 +95,7 @@ It's worth noting that this pattern persists despite that in-park tweets are 4 w
 There are four aggregated park types: neighborhood park, mini park, civic or library, and regional park. I tested the sentiment statistics against the types and hardly found difference at the level of 0.05. The most obvious result is that tweets in civic space or libraries have more positive words than tweets in mini parks or neighborhood parks, but there is no significant difference between “civic space or libraries” and regional parks. Therefore, residents could enjoy better well-being in civic space or libraries than mini parks or neighborhood parks. 
 
 Pairwise comparison of tweet positive word count across park types
-![anova_positive_count]({{ site.url }}{{ site.baseurl }}/charts/anova_positive_count.png)
+![anova_positive_count]({{ site.url }}{{ site.baseurl }}/charts/anova_positive_count.PNG)
 
 ### Time variance of sentiment
 A roughly fluctuant pattern shows up that in-park tweets posted in early morning, early afternoon, and at dusk are more positive. This pattern is consistent with that of tweets outside parks. The pattern of subjectivity is less clear. 

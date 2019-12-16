@@ -91,6 +91,9 @@ T-test: on average, a tweet in parks has 0.05 more and 0.24 less negative words 
 
 It's worth noting that this pattern persists despite that in-park tweets are 4 words longer than outside-park tweets on average. Therefore, people particularly tweet less negative words in parks.
 
+Table: t-test result
+![t_table]({{ site.url }}{{ site.baseurl }}/charts/t_table.PNG)
+
 ### Testing park type difference
 There are four aggregated park types: neighborhood park, mini park, civic or library, and regional park. I tested the sentiment statistics against the types and hardly found difference at the level of 0.05. The most obvious result is that tweets in civic space or libraries have more positive words than tweets in mini parks or neighborhood parks, but there is no significant difference between “civic space or libraries” and regional parks. Therefore, residents could enjoy better well-being in civic space or libraries than mini parks or neighborhood parks. 
 
@@ -106,15 +109,15 @@ Subjectivity of tweets inside and outside parks from 9am to 6pm
 <div id="folium-chart-7"></div>
 
 ## Summary and discussions
-* Major findings: 
-+ In park, people tend to
+Major findings: 
+* In park, people tend to
   - post longer tweets;
   - post more positive words and fewer negative words.
 - Tweets in civic spaces/ libraries are even more positive than tweets in neighborhood parks and mini parks.
 - Tweets in parks are even more positive in early morning, early afternoon, and at dusk.
 
-* Findings of "no-finding": 
-- Consistent sentiment difference among different types of park is not found.
+Findings of "no-finding": 
+* Consistent sentiment difference among different types of park is not found.
 - Substantial sentiment variation across time of day is not found.
 - Correlation between park score and sentiment is not found.
 

@@ -6,6 +6,10 @@ tags: [dataviz, geopandas, hvplot, holoviews, tweet, sentiment analysis, park, S
 excerpt: "Parks & open spaces and user sentiment: A case study of San Francisco using Twitter data"
 folium-loader:
   folium-chart-1: ["charts/local_tweet_heat_map.html", "400"]
+  folium-chart-2: ["charts/positive_count_in_outside_park.html", "400"]
+  folium-chart-3: ["charts/negative_count_in_outside_park.html", "400"]
+  folium-chart-4: ["charts/polarity_in_outside_park.html", "400"]
+  folium-chart-5: ["charts/subjectivity_in_outside_park.html", "400"]
 
 custom-css-list:
   - "assets/css/leaflet.timedimension.control.min.css"
@@ -40,10 +44,36 @@ Where do people tweet:
 I classified “in-park” tweets by spatially joining park information to the tweets . In this way, 2093 tweets were classified as “in-park”.
 
 ### Twitter text EDA
+![word_cloud]({{ site.url }}{{ site.baseurl }}/charts/word_cloud.png)
+Word cloud of in-park tweets
 
+Tweets inside parks are found to be longer than tweets outside parks, which is statistically significant at level of 0.05. On average, an in-park tweet has 12 words, while an outside-park tweet has 8 words. Moreover, word frequency analysis shows that residents are mostly tweeting “San Francisco” and “CA” in parks. Other frequent words include “like”, “see”, “place”, and etc. 
 
+![word_count]({{ site.url }}{{ site.baseurl }}/charts/word_count.png)
 
 ## Sentiment analysis
+
+### Positive and negative word count
+The counts of positive and negative words of each tweet echo its sentiment. I used Hu and Liu opinion lexicon (English)  positive and negative word corpus and conducted the counts.
+
+Histogram of positive word count inside and outside parks:
+<div id="folium-chart-2"></div>
+
+Histogram of negative word count inside and outside parks:
+<div id="folium-chart-3"></div>
+
+### Polarity and subjectivity scores
+I used pre-trained model of package “textblob” to calculate the polarity (range: -1~1) and subjectivity (range: 0-1) of the tweets.
+
+Histogram of polarity inside and outside parks:
+<div id="folium-chart-4"></div>
+
+Histogram of subjectivity inside and outside parks:
+<div id="folium-chart-5"></div>
+
+### Testing in-park and outside-park difference
+
+### Testing park type difference
 
 ## Summary and discussions
 

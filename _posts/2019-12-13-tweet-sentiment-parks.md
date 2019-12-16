@@ -33,10 +33,12 @@ I obtained the park geometry, park score, and city boundary data from the open d
 ![sf_parks]({{ site.url }}{{ site.baseurl }}/charts/sf_parks.png)
 
 ## Exploratory analysis
+
 ### Classify in-park and outside-park tweets
 Where do people tweet:
 <div id="folium-chart-1"></div>
 I classified “in-park” tweets by spatially joining park information to the tweets . In this way, 2093 tweets were classified as “in-park”.
+
 ### Twitter text EDA
 
 

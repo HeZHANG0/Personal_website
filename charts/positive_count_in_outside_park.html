@@ -1,0 +1,271 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>hvPlot Plot</title>
+      
+      
+        
+          
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                }
+
+                .panel-df tr, th, td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        <style>
+            .widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="6c3e1a62-7fc2-4d28-b8c8-c54a405bd7ba" data-root-id="1112"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1417">
+          {"cb98aeec-b97c-48fe-a659-3f75575cae9a":{"roots":{"references":[{"attributes":{},"id":"1011","type":"LinearScale"},{"attributes":{"axis_label":"positive_count","bounds":"auto","formatter":{"id":"1087","type":"BasicTickFormatter"},"major_label_orientation":"horizontal","ticker":{"id":"1058","type":"BasicTicker"}},"id":"1057","type":"LinearAxis"},{"attributes":{"grid_line_color":null,"ticker":{"id":"1014","type":"BasicTicker"}},"id":"1017","type":"Grid"},{"attributes":{},"id":"1053","type":"LinearScale"},{"attributes":{"data_source":{"id":"1079","type":"ColumnDataSource"},"glyph":{"id":"1082","type":"Quad"},"hover_glyph":null,"muted_glyph":{"id":"1084","type":"Quad"},"nonselection_glyph":{"id":"1083","type":"Quad"},"selection_glyph":null,"view":{"id":"1086","type":"CDSView"}},"id":"1085","type":"GlyphRenderer"},{"attributes":{},"id":"1058","type":"BasicTicker"},{"attributes":{},"id":"1027","type":"ResetTool"},{"attributes":{"text":"in_park: Y","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1049","type":"Title"},{"attributes":{"source":{"id":"1079","type":"ColumnDataSource"}},"id":"1086","type":"CDSView"},{"attributes":{"overlay":{"id":"1098","type":"BoxAnnotation"}},"id":"1026","type":"BoxZoomTool"},{"attributes":{"grid_line_color":null,"ticker":{"id":"1058","type":"BasicTicker"}},"id":"1061","type":"Grid"},{"attributes":{"axis_label":"","bounds":"auto","formatter":{"id":"1089","type":"BasicTickFormatter"},"major_label_orientation":"horizontal","ticker":{"id":"1063","type":"BasicTicker"}},"id":"1062","type":"LinearAxis"},{"attributes":{"axis_label":"","bounds":"auto","formatter":{"id":"1045","type":"BasicTickFormatter"},"major_label_orientation":"horizontal","ticker":{"id":"1019","type":"BasicTicker"}},"id":"1018","type":"LinearAxis"},{"attributes":{"callback":null,"data":{"left":{"__ndarray__":"AAAAAAAAAACamZmZmZnZP5qZmZmZmek/NDMzMzMz8z+amZmZmZn5PwAAAAAAAABANDMzMzMzA0BnZmZmZmYGQJqZmZmZmQlAzczMzMzMDEAAAAAAAAAQQJqZmZmZmRFANDMzMzMzE0DNzMzMzMwUQGdmZmZmZhZAAAAAAAAAGECamZmZmZkZQDQzMzMzMxtAzczMzMzMHEBnZmZmZmYeQA==","dtype":"float64","shape":[20]},"positive_count":{"__ndarray__":"mpmZmZmZyT80MzMzMzPjPwAAAAAAAPA/Z2ZmZmZm9j/NzMzMzMz8P5qZmZmZmQFAzszMzMzMBEAAAAAAAAAIQDQzMzMzMwtAZmZmZmZmDkDNzMzMzMwQQGdmZmZmZhJAAAAAAAAAFECamZmZmZkVQDQzMzMzMxdAzczMzMzMGEBnZmZmZmYaQAAAAAAAABxAmpmZmZmZHUA0MzMzMzMfQA==","dtype":"float64","shape":[20]},"positive_count_count":[944,0,383,0,0,180,0,66,0,0,25,0,14,0,0,9,0,0,0,1],"right":{"__ndarray__":"mpmZmZmZ2T+amZmZmZnpPzQzMzMzM/M/mpmZmZmZ+T8AAAAAAAAAQDQzMzMzMwNAZ2ZmZmZmBkCamZmZmZkJQM3MzMzMzAxAAAAAAAAAEECamZmZmZkRQDQzMzMzMxNAzczMzMzMFEBnZmZmZmYWQAAAAAAAABhAmpmZmZmZGUA0MzMzMzMbQM3MzMzMzBxAZ2ZmZmZmHkAAAAAAAAAgQA==","dtype":"float64","shape":[20]},"top":[944,0,383,0,0,180,0,66,0,0,25,0,14,0,0,9,0,0,0,1]},"selected":{"id":"1080","type":"Selection"},"selection_policy":{"id":"1105","type":"UnionRenderers"}},"id":"1079","type":"ColumnDataSource"},{"attributes":{"dimension":1,"grid_line_color":null,"ticker":{"id":"1019","type":"BasicTicker"}},"id":"1022","type":"Grid"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"line_alpha":{"value":0.2},"line_color":{"value":"black"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1040","type":"Quad"},{"attributes":{},"id":"1063","type":"BasicTicker"},{"attributes":{},"id":"1096","type":"UnionRenderers"},{"attributes":{"align":null,"below":[{"id":"1057","type":"LinearAxis"}],"center":[{"id":"1061","type":"Grid"},{"id":"1066","type":"Grid"}],"left":[{"id":"1062","type":"LinearAxis"}],"margin":null,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"plot_height":300,"plot_width":400,"renderers":[{"id":"1085","type":"GlyphRenderer"}],"sizing_mode":"fixed","title":{"id":"1049","type":"Title"},"toolbar":{"id":"1072","type":"Toolbar"},"toolbar_location":null,"x_range":{"id":"1001","type":"Range1d"},"x_scale":{"id":"1053","type":"LinearScale"},"y_range":{"id":"1002","type":"Range1d"},"y_scale":{"id":"1055","type":"LinearScale"}},"id":"1048","subtype":"Figure","type":"Plot"},{"attributes":{"dimension":1,"grid_line_color":null,"ticker":{"id":"1063","type":"BasicTicker"}},"id":"1066","type":"Grid"},{"attributes":{},"id":"1014","type":"BasicTicker"},{"attributes":{"children":[[{"id":"1004","subtype":"Figure","type":"Plot"},0,0],[{"id":"1048","subtype":"Figure","type":"Plot"},0,1]]},"id":"1109","type":"GridBox"},{"attributes":{},"id":"1080","type":"Selection"},{"attributes":{"tools":[{"id":"1003","type":"HoverTool"},{"id":"1023","type":"SaveTool"},{"id":"1024","type":"PanTool"},{"id":"1025","type":"WheelZoomTool"},{"id":"1026","type":"BoxZoomTool"},{"id":"1027","type":"ResetTool"},{"id":"1047","type":"HoverTool"},{"id":"1067","type":"SaveTool"},{"id":"1068","type":"PanTool"},{"id":"1069","type":"WheelZoomTool"},{"id":"1070","type":"BoxZoomTool"},{"id":"1071","type":"ResetTool"}]},"id":"1110","type":"ProxyToolbar"},{"attributes":{},"id":"1019","type":"BasicTicker"},{"attributes":{"callback":null,"data":{"left":{"__ndarray__":"AAAAAAAAAACamZmZmZnZP5qZmZmZmek/NDMzMzMz8z+amZmZmZn5PwAAAAAAAABANDMzMzMzA0BnZmZmZmYGQJqZmZmZmQlAzczMzMzMDEAAAAAAAAAQQJqZmZmZmRFANDMzMzMzE0DNzMzMzMwUQGdmZmZmZhZAAAAAAAAAGECamZmZmZkZQDQzMzMzMxtAzczMzMzMHEBnZmZmZmYeQA==","dtype":"float64","shape":[20]},"positive_count":{"__ndarray__":"mpmZmZmZyT80MzMzMzPjPwAAAAAAAPA/Z2ZmZmZm9j/NzMzMzMz8P5qZmZmZmQFAzszMzMzMBEAAAAAAAAAIQDQzMzMzMwtAZmZmZmZmDkDNzMzMzMwQQGdmZmZmZhJAAAAAAAAAFECamZmZmZkVQDQzMzMzMxdAzczMzMzMGEBnZmZmZmYaQAAAAAAAABxAmpmZmZmZHUA0MzMzMzMfQA==","dtype":"float64","shape":[20]},"positive_count_count":[2964,0,1462,0,0,508,0,158,0,0,67,0,31,0,0,13,0,6,0,2],"right":{"__ndarray__":"mpmZmZmZ2T+amZmZmZnpPzQzMzMzM/M/mpmZmZmZ+T8AAAAAAAAAQDQzMzMzMwNAZ2ZmZmZmBkCamZmZmZkJQM3MzMzMzAxAAAAAAAAAEECamZmZmZkRQDQzMzMzMxNAzczMzMzMFEBnZmZmZmYWQAAAAAAAABhAmpmZmZmZGUA0MzMzMzMbQM3MzMzMzBxAZ2ZmZmZmHkAAAAAAAAAgQA==","dtype":"float64","shape":[20]},"top":[2964,0,1462,0,0,508,0,158,0,0,67,0,31,0,0,13,0,6,0,2]},"selected":{"id":"1036","type":"Selection"},"selection_policy":{"id":"1096","type":"UnionRenderers"}},"id":"1035","type":"ColumnDataSource"},{"attributes":{},"id":"1087","type":"BasicTickFormatter"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1003","type":"HoverTool"},{"id":"1023","type":"SaveTool"},{"id":"1024","type":"PanTool"},{"id":"1025","type":"WheelZoomTool"},{"id":"1026","type":"BoxZoomTool"},{"id":"1027","type":"ResetTool"}]},"id":"1028","type":"Toolbar"},{"attributes":{},"id":"1023","type":"SaveTool"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1047","type":"HoverTool"},{"id":"1067","type":"SaveTool"},{"id":"1068","type":"PanTool"},{"id":"1069","type":"WheelZoomTool"},{"id":"1070","type":"BoxZoomTool"},{"id":"1071","type":"ResetTool"}]},"id":"1072","type":"Toolbar"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1107","type":"BoxAnnotation"},{"attributes":{},"id":"1067","type":"SaveTool"},{"attributes":{"bottom":{"value":0},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1038","type":"Quad"},{"attributes":{},"id":"1089","type":"BasicTickFormatter"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"line_alpha":{"value":0.2},"line_color":{"value":"black"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1084","type":"Quad"},{"attributes":{},"id":"1068","type":"PanTool"},{"attributes":{"children":[{"id":"1111","type":"ToolbarBox"},{"id":"1109","type":"GridBox"}]},"id":"1112","type":"Column"},{"attributes":{"data_source":{"id":"1035","type":"ColumnDataSource"},"glyph":{"id":"1038","type":"Quad"},"hover_glyph":null,"muted_glyph":{"id":"1040","type":"Quad"},"nonselection_glyph":{"id":"1039","type":"Quad"},"selection_glyph":null,"view":{"id":"1042","type":"CDSView"}},"id":"1041","type":"GlyphRenderer"},{"attributes":{"align":null,"below":[{"id":"1013","type":"LinearAxis"}],"center":[{"id":"1017","type":"Grid"},{"id":"1022","type":"Grid"}],"left":[{"id":"1018","type":"LinearAxis"}],"margin":null,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"plot_height":300,"plot_width":400,"renderers":[{"id":"1041","type":"GlyphRenderer"}],"sizing_mode":"fixed","title":{"id":"1005","type":"Title"},"toolbar":{"id":"1028","type":"Toolbar"},"toolbar_location":null,"x_range":{"id":"1001","type":"Range1d"},"x_scale":{"id":"1009","type":"LinearScale"},"y_range":{"id":"1002","type":"Range1d"},"y_scale":{"id":"1011","type":"LinearScale"}},"id":"1004","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1055","type":"LinearScale"},{"attributes":{},"id":"1069","type":"WheelZoomTool"},{"attributes":{"text":"in_park: N","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1005","type":"Title"},{"attributes":{"overlay":{"id":"1107","type":"BoxAnnotation"}},"id":"1070","type":"BoxZoomTool"},{"attributes":{},"id":"1071","type":"ResetTool"},{"attributes":{"callback":null,"renderers":[{"id":"1085","type":"GlyphRenderer"}],"tags":["hv_created"],"tooltips":[["positive_count","@{positive_count}"],["Count","@{positive_count_count}"]]},"id":"1047","type":"HoverTool"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"line_alpha":{"value":0.1},"line_color":{"value":"black"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1039","type":"Quad"},{"attributes":{"toolbar":{"id":"1110","type":"ProxyToolbar"},"toolbar_location":"above"},"id":"1111","type":"ToolbarBox"},{"attributes":{},"id":"1036","type":"Selection"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1098","type":"BoxAnnotation"},{"attributes":{"source":{"id":"1035","type":"ColumnDataSource"}},"id":"1042","type":"CDSView"},{"attributes":{},"id":"1045","type":"BasicTickFormatter"},{"attributes":{},"id":"1105","type":"UnionRenderers"},{"attributes":{},"id":"1043","type":"BasicTickFormatter"},{"attributes":{"bottom":{"value":0},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1082","type":"Quad"},{"attributes":{"axis_label":"positive_count","bounds":"auto","formatter":{"id":"1043","type":"BasicTickFormatter"},"major_label_orientation":"horizontal","ticker":{"id":"1014","type":"BasicTicker"}},"id":"1013","type":"LinearAxis"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"line_alpha":{"value":0.1},"line_color":{"value":"black"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1083","type":"Quad"},{"attributes":{"callback":null,"end":2964.0,"reset_end":2964.0,"reset_start":0.0,"tags":[[["positive_count_count","Count",null]]]},"id":"1002","type":"Range1d"},{"attributes":{},"id":"1024","type":"PanTool"},{"attributes":{"callback":null,"end":8.0,"reset_end":8.0,"reset_start":0.0,"tags":[[["positive_count","positive_count",null]]]},"id":"1001","type":"Range1d"},{"attributes":{"callback":null,"renderers":[{"id":"1041","type":"GlyphRenderer"}],"tags":["hv_created"],"tooltips":[["positive_count","@{positive_count}"],["Count","@{positive_count_count}"]]},"id":"1003","type":"HoverTool"},{"attributes":{},"id":"1009","type":"LinearScale"},{"attributes":{},"id":"1025","type":"WheelZoomTool"}],"root_ids":["1112"]},"title":"Bokeh Application","version":"1.4.0"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('1417').textContent;
+                  var render_items = [{"docid":"cb98aeec-b97c-48fe-a659-3f75575cae9a","roots":{"1112":"6c3e1a62-7fc2-4d28-b8c8-c54a405bd7ba"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>

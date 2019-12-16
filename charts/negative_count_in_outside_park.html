@@ -1,0 +1,271 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>hvPlot Plot</title>
+      
+      
+        
+          
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                }
+
+                .panel-df tr, th, td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        <style>
+            .widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="014b1d47-ac0e-4929-ba17-468da65451e5" data-root-id="1881"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="2186">
+          {"67c2ea3c-945d-40c0-9727-a2bb70801eb5":{"roots":{"references":[{"attributes":{"axis_label":"negative_count","bounds":"auto","formatter":{"id":"1856","type":"BasicTickFormatter"},"major_label_orientation":"horizontal","ticker":{"id":"1827","type":"BasicTicker"}},"id":"1826","type":"LinearAxis"},{"attributes":{},"id":"1792","type":"SaveTool"},{"attributes":{"tools":[{"id":"1772","type":"HoverTool"},{"id":"1792","type":"SaveTool"},{"id":"1793","type":"PanTool"},{"id":"1794","type":"WheelZoomTool"},{"id":"1795","type":"BoxZoomTool"},{"id":"1796","type":"ResetTool"},{"id":"1816","type":"HoverTool"},{"id":"1836","type":"SaveTool"},{"id":"1837","type":"PanTool"},{"id":"1838","type":"WheelZoomTool"},{"id":"1839","type":"BoxZoomTool"},{"id":"1840","type":"ResetTool"}]},"id":"1879","type":"ProxyToolbar"},{"attributes":{"overlay":{"id":"1876","type":"BoxAnnotation"}},"id":"1839","type":"BoxZoomTool"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1772","type":"HoverTool"},{"id":"1792","type":"SaveTool"},{"id":"1793","type":"PanTool"},{"id":"1794","type":"WheelZoomTool"},{"id":"1795","type":"BoxZoomTool"},{"id":"1796","type":"ResetTool"}]},"id":"1797","type":"Toolbar"},{"attributes":{},"id":"1788","type":"BasicTicker"},{"attributes":{},"id":"1840","type":"ResetTool"},{"attributes":{},"id":"1827","type":"BasicTicker"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"line_alpha":{"value":0.1},"line_color":{"value":"black"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1808","type":"Quad"},{"attributes":{"children":[{"id":"1880","type":"ToolbarBox"},{"id":"1878","type":"GridBox"}]},"id":"1881","type":"Column"},{"attributes":{},"id":"1793","type":"PanTool"},{"attributes":{},"id":"1778","type":"LinearScale"},{"attributes":{"callback":null,"end":3497.0,"reset_end":3497.0,"reset_start":0.0,"tags":[[["negative_count_count","Count",null]]]},"id":"1771","type":"Range1d"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"line_alpha":{"value":0.1},"line_color":{"value":"black"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1852","type":"Quad"},{"attributes":{},"id":"1838","type":"WheelZoomTool"},{"attributes":{},"id":"1780","type":"LinearScale"},{"attributes":{},"id":"1865","type":"UnionRenderers"},{"attributes":{},"id":"1837","type":"PanTool"},{"attributes":{},"id":"1783","type":"BasicTicker"},{"attributes":{},"id":"1856","type":"BasicTickFormatter"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1867","type":"BoxAnnotation"},{"attributes":{"data_source":{"id":"1848","type":"ColumnDataSource"},"glyph":{"id":"1851","type":"Quad"},"hover_glyph":null,"muted_glyph":{"id":"1853","type":"Quad"},"nonselection_glyph":{"id":"1852","type":"Quad"},"selection_glyph":null,"view":{"id":"1855","type":"CDSView"}},"id":"1854","type":"GlyphRenderer"},{"attributes":{},"id":"1794","type":"WheelZoomTool"},{"attributes":{},"id":"1836","type":"SaveTool"},{"attributes":{"axis_label":"negative_count","bounds":"auto","formatter":{"id":"1812","type":"BasicTickFormatter"},"major_label_orientation":"horizontal","ticker":{"id":"1783","type":"BasicTicker"}},"id":"1782","type":"LinearAxis"},{"attributes":{},"id":"1874","type":"UnionRenderers"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"line_alpha":{"value":0.2},"line_color":{"value":"black"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1853","type":"Quad"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1816","type":"HoverTool"},{"id":"1836","type":"SaveTool"},{"id":"1837","type":"PanTool"},{"id":"1838","type":"WheelZoomTool"},{"id":"1839","type":"BoxZoomTool"},{"id":"1840","type":"ResetTool"}]},"id":"1841","type":"Toolbar"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1876","type":"BoxAnnotation"},{"attributes":{"source":{"id":"1848","type":"ColumnDataSource"}},"id":"1855","type":"CDSView"},{"attributes":{"toolbar":{"id":"1879","type":"ProxyToolbar"},"toolbar_location":"above"},"id":"1880","type":"ToolbarBox"},{"attributes":{"bottom":{"value":0},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1851","type":"Quad"},{"attributes":{},"id":"1849","type":"Selection"},{"attributes":{"callback":null,"renderers":[{"id":"1854","type":"GlyphRenderer"}],"tags":["hv_created"],"tooltips":[["negative_count","@{negative_count}"],["Count","@{negative_count_count}"]]},"id":"1816","type":"HoverTool"},{"attributes":{"dimension":1,"grid_line_color":null,"ticker":{"id":"1832","type":"BasicTicker"}},"id":"1835","type":"Grid"},{"attributes":{"grid_line_color":null,"ticker":{"id":"1783","type":"BasicTicker"}},"id":"1786","type":"Grid"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"line_alpha":{"value":0.2},"line_color":{"value":"black"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1809","type":"Quad"},{"attributes":{"text":"in_park: N","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1774","type":"Title"},{"attributes":{},"id":"1832","type":"BasicTicker"},{"attributes":{"callback":null,"renderers":[{"id":"1810","type":"GlyphRenderer"}],"tags":["hv_created"],"tooltips":[["negative_count","@{negative_count}"],["Count","@{negative_count_count}"]]},"id":"1772","type":"HoverTool"},{"attributes":{"axis_label":"","bounds":"auto","formatter":{"id":"1814","type":"BasicTickFormatter"},"major_label_orientation":"horizontal","ticker":{"id":"1788","type":"BasicTicker"}},"id":"1787","type":"LinearAxis"},{"attributes":{"overlay":{"id":"1867","type":"BoxAnnotation"}},"id":"1795","type":"BoxZoomTool"},{"attributes":{"callback":null,"end":7.0,"reset_end":7.0,"reset_start":0.0,"tags":[[["negative_count","negative_count",null]]]},"id":"1770","type":"Range1d"},{"attributes":{"grid_line_color":null,"ticker":{"id":"1827","type":"BasicTicker"}},"id":"1830","type":"Grid"},{"attributes":{"axis_label":"","bounds":"auto","formatter":{"id":"1858","type":"BasicTickFormatter"},"major_label_orientation":"horizontal","ticker":{"id":"1832","type":"BasicTicker"}},"id":"1831","type":"LinearAxis"},{"attributes":{},"id":"1814","type":"BasicTickFormatter"},{"attributes":{"callback":null,"data":{"left":{"__ndarray__":"AAAAAAAAAABmZmZmZmbWP2ZmZmZmZuY/zMzMzMzM8D9mZmZmZmb2PwAAAAAAAPw/zMzMzMzMAECZmZmZmZkDQGZmZmZmZgZAMzMzMzMzCUAAAAAAAAAMQMzMzMzMzA5AzMzMzMzMEEAzMzMzMzMSQJmZmZmZmRNAAAAAAAAAFUBmZmZmZmYWQMzMzMzMzBdAMzMzMzMzGUCZmZmZmZkaQA==","dtype":"float64","shape":[20]},"negative_count":{"__ndarray__":"ZmZmZmZmxj/MzMzMzMzgP////////+s/mZmZmZmZ8z8zMzMzMzP5P8zMzMzMzP4/MjMzMzMzAkAAAAAAAAAFQMzMzMzMzAdAmpmZmZmZCkBmZmZmZmYNQJmZmZmZGRBAAAAAAACAEUBmZmZmZuYSQMzMzMzMTBRAMzMzMzOzFUCZmZmZmRkXQAAAAAAAgBhAZmZmZmbmGUDMzMzMzEwbQA==","dtype":"float64","shape":[20]},"negative_count_count":[1340,0,210,0,0,57,0,0,9,0,0,4,0,0,2,0,0,0,0,0],"right":{"__ndarray__":"ZmZmZmZm1j9mZmZmZmbmP8zMzMzMzPA/ZmZmZmZm9j8AAAAAAAD8P8zMzMzMzABAmZmZmZmZA0BmZmZmZmYGQDMzMzMzMwlAAAAAAAAADEDMzMzMzMwOQMzMzMzMzBBAMzMzMzMzEkCZmZmZmZkTQAAAAAAAABVAZmZmZmZmFkDMzMzMzMwXQDMzMzMzMxlAmZmZmZmZGkAAAAAAAAAcQA==","dtype":"float64","shape":[20]},"top":[1340,0,210,0,0,57,0,0,9,0,0,4,0,0,2,0,0,0,0,0]},"selected":{"id":"1849","type":"Selection"},"selection_policy":{"id":"1874","type":"UnionRenderers"}},"id":"1848","type":"ColumnDataSource"},{"attributes":{},"id":"1858","type":"BasicTickFormatter"},{"attributes":{"align":null,"below":[{"id":"1826","type":"LinearAxis"}],"center":[{"id":"1830","type":"Grid"},{"id":"1835","type":"Grid"}],"left":[{"id":"1831","type":"LinearAxis"}],"margin":null,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"plot_height":300,"plot_width":400,"renderers":[{"id":"1854","type":"GlyphRenderer"}],"sizing_mode":"fixed","title":{"id":"1818","type":"Title"},"toolbar":{"id":"1841","type":"Toolbar"},"toolbar_location":null,"x_range":{"id":"1770","type":"Range1d"},"x_scale":{"id":"1822","type":"LinearScale"},"y_range":{"id":"1771","type":"Range1d"},"y_scale":{"id":"1824","type":"LinearScale"}},"id":"1817","subtype":"Figure","type":"Plot"},{"attributes":{"data_source":{"id":"1804","type":"ColumnDataSource"},"glyph":{"id":"1807","type":"Quad"},"hover_glyph":null,"muted_glyph":{"id":"1809","type":"Quad"},"nonselection_glyph":{"id":"1808","type":"Quad"},"selection_glyph":null,"view":{"id":"1811","type":"CDSView"}},"id":"1810","type":"GlyphRenderer"},{"attributes":{},"id":"1812","type":"BasicTickFormatter"},{"attributes":{"dimension":1,"grid_line_color":null,"ticker":{"id":"1788","type":"BasicTicker"}},"id":"1791","type":"Grid"},{"attributes":{"text":"in_park: Y","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1818","type":"Title"},{"attributes":{"callback":null,"data":{"left":{"__ndarray__":"AAAAAAAAAABmZmZmZmbWP2ZmZmZmZuY/zMzMzMzM8D9mZmZmZmb2PwAAAAAAAPw/zMzMzMzMAECZmZmZmZkDQGZmZmZmZgZAMzMzMzMzCUAAAAAAAAAMQMzMzMzMzA5AzMzMzMzMEEAzMzMzMzMSQJmZmZmZmRNAAAAAAAAAFUBmZmZmZmYWQMzMzMzMzBdAMzMzMzMzGUCZmZmZmZkaQA==","dtype":"float64","shape":[20]},"negative_count":{"__ndarray__":"ZmZmZmZmxj/MzMzMzMzgP////////+s/mZmZmZmZ8z8zMzMzMzP5P8zMzMzMzP4/MjMzMzMzAkAAAAAAAAAFQMzMzMzMzAdAmpmZmZmZCkBmZmZmZmYNQJmZmZmZGRBAAAAAAACAEUBmZmZmZuYSQMzMzMzMTBRAMzMzMzOzFUCZmZmZmRkXQAAAAAAAgBhAZmZmZmbmGUDMzMzMzEwbQA==","dtype":"float64","shape":[20]},"negative_count_count":[3497,0,1226,0,0,328,0,0,100,0,0,45,0,0,12,0,0,0,0,3],"right":{"__ndarray__":"ZmZmZmZm1j9mZmZmZmbmP8zMzMzMzPA/ZmZmZmZm9j8AAAAAAAD8P8zMzMzMzABAmZmZmZmZA0BmZmZmZmYGQDMzMzMzMwlAAAAAAAAADEDMzMzMzMwOQMzMzMzMzBBAMzMzMzMzEkCZmZmZmZkTQAAAAAAAABVAZmZmZmZmFkDMzMzMzMwXQDMzMzMzMxlAmZmZmZmZGkAAAAAAAAAcQA==","dtype":"float64","shape":[20]},"top":[3497,0,1226,0,0,328,0,0,100,0,0,45,0,0,12,0,0,0,0,3]},"selected":{"id":"1805","type":"Selection"},"selection_policy":{"id":"1865","type":"UnionRenderers"}},"id":"1804","type":"ColumnDataSource"},{"attributes":{"align":null,"below":[{"id":"1782","type":"LinearAxis"}],"center":[{"id":"1786","type":"Grid"},{"id":"1791","type":"Grid"}],"left":[{"id":"1787","type":"LinearAxis"}],"margin":null,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"plot_height":300,"plot_width":400,"renderers":[{"id":"1810","type":"GlyphRenderer"}],"sizing_mode":"fixed","title":{"id":"1774","type":"Title"},"toolbar":{"id":"1797","type":"Toolbar"},"toolbar_location":null,"x_range":{"id":"1770","type":"Range1d"},"x_scale":{"id":"1778","type":"LinearScale"},"y_range":{"id":"1771","type":"Range1d"},"y_scale":{"id":"1780","type":"LinearScale"}},"id":"1773","subtype":"Figure","type":"Plot"},{"attributes":{"bottom":{"value":0},"fill_color":{"value":"#1f77b3"},"left":{"field":"left"},"right":{"field":"right"},"top":{"field":"top"}},"id":"1807","type":"Quad"},{"attributes":{},"id":"1822","type":"LinearScale"},{"attributes":{},"id":"1805","type":"Selection"},{"attributes":{},"id":"1824","type":"LinearScale"},{"attributes":{},"id":"1796","type":"ResetTool"},{"attributes":{"children":[[{"id":"1773","subtype":"Figure","type":"Plot"},0,0],[{"id":"1817","subtype":"Figure","type":"Plot"},0,1]]},"id":"1878","type":"GridBox"},{"attributes":{"source":{"id":"1804","type":"ColumnDataSource"}},"id":"1811","type":"CDSView"}],"root_ids":["1881"]},"title":"Bokeh Application","version":"1.4.0"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('2186').textContent;
+                  var render_items = [{"docid":"67c2ea3c-945d-40c0-9727-a2bb70801eb5","roots":{"1881":"014b1d47-ac0e-4929-ba17-468da65451e5"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>

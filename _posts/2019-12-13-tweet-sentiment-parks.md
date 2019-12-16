@@ -12,6 +12,8 @@ folium-loader:
   folium-chart-5: ["charts/subjectivity_in_outside_park.html", "300"]
   folium-chart-6: ["charts/by_time_polarity_in_outside_park.html", "300"]
   folium-chart-7: ["charts/by_time_subjectivity_in_outside_park.html", "300"]
+  folium-chart-8: ["charts/negative_tweet_heat_map.html", "400"]
+  folium-chart-9: ["charts/very_positive_tweet_heat_map.html", "400"]
 
 custom-css-list:
   - "assets/css/leaflet.timedimension.control.min.css"
@@ -19,7 +21,7 @@ toc: true
 toc_sticky: true
 ---
 
-Parks and open spaces in cities are believed to have benefits on well-being of city residents. The psychological benefits of urban green infrastructure have been acknowledged by various studies. Thanks to social media, there is a source of disaggregated data to examine individual experience with regard to parks and open spaces (referred to as “parks” below): geo-tagged tweets. This exploratory project uses real-time streaming twitter data to correlate quantified sentiment inside/outside parks in San Francisco. It tries to answer the question: are people more positive when they are in parks compared to when they are not? Specifically, are people expressing more positively through Twitter when they are visiting parks? The result of this preliminary study answers “Yes” to this question. Further study using more extensive data and theoretical review of the use of tweets as indicator of spatiotemporal public expressed sentiment are required to dive deeper into this question.
+Parks and open spaces (referred to as parks below) in cities are believed to have benefits on well-being of city residents. This exploratory project uses real-time streaming twitter data to correlate quantified sentiment inside/outside parks in San Francisco. It tries to answer the question: are people more positive when they are in parks compared to when they are not? Specifically, are people expressing more positively through Twitter when they are visiting parks? The result of this preliminary study answers “Yes” to this question. 
 
 As a trailer of this analysis, below the GIF shows in-park tweet sentiment by time of day on a weekend in San Francisco:
 
@@ -52,6 +54,7 @@ Word cloud of in-park tweets
 
 Tweets inside parks are found to be longer than tweets outside parks, which is statistically significant at level of 0.05. On average, an in-park tweet has 12 words, while an outside-park tweet has 8 words. Moreover, word frequency analysis shows that residents are mostly tweeting “San Francisco” and “CA” in parks. Other frequent words include “like”, “see”, “place”, and etc. 
 
+Most frequent words in in-park tweets:
 ![word_count]({{ site.url }}{{ site.baseurl }}/charts/word_count_in_park.png)
 
 ## Sentiment analysis
@@ -74,24 +77,39 @@ Histogram of polarity inside and outside parks:
 Histogram of subjectivity inside and outside parks:
 <div id="folium-chart-5"></div>
 
+Polarity of tweets:
+![tweet_polarity]({{ site.url }}{{ site.baseurl }}/charts/tweets.png)
+
+Heatmap of negative(polarity<0) tweets :
+<div id="folium-chart-8"></div>
+
+Heatmap of top 50% positive(polarity>0) tweets:
+<div id="folium-chart-9"></div>
+
 ### Testing in-park and outside-park difference
 T-test: on average, a tweet in parks has 0.05 more and 0.24 less negative words than one outside parks; an in-park tweet has a polarity 0.028 higher than an outside-park tweet and a subjectivity 0.078 lower. All results above are statistically significant and level of 0.05.
 
 It's worth noting that this pattern persists despite that in-park tweets are 4 words longer than outside-park tweets on average. Therefore, people particularly tweet less negative words in parks.
 
 ### Testing park type difference
+There are four aggregated park types: neighborhood park, mini park, civic or library, and regional park. I tested the sentiment statistics against the types and hardly found difference at the level of 0.05. The most obvious result is that tweets in civic space or libraries have more positive words than tweets in mini parks or neighborhood parks, but there is no significant difference between “civic space or libraries” and regional parks. Therefore, residents could enjoy better well-being in civic space or libraries than mini parks or neighborhood parks. 
 
+Pairwise comparison of tweet positive word count across park types
+![anova_positive_count]({{ site.url }}{{ site.baseurl }}/charts/anova_positive_count.png)
 
 ### Time variance of sentiment
-A roughly fluctuant pattern shows up that in-park tweets posted in early morning, at noon, and at dusk are more positive. This pattern is consistent with that of tweets outside parks. The pattern of subjectivity is less clear. 
-Figure: polarity of tweets inside and outside parks from 9am to 6pm
+A roughly fluctuant pattern shows up that in-park tweets posted in early morning, early afternoon, and at dusk are more positive. This pattern is consistent with that of tweets outside parks. The pattern of subjectivity is less clear. 
+Polarity of tweets inside and outside parks from 9am to 6pm
 <div id="folium-chart-6"></div>
 
-Figure: subjectivity of tweets inside and outside parks from 9am to 6pm
+Subjectivity of tweets inside and outside parks from 9am to 6pm
 <div id="folium-chart-7"></div>
 
 ## Summary and discussions
 
+
+
+Further study using more extensive data and theoretical review of the use of tweets as indicator of spatiotemporal public expressed sentiment are required to dive deeper into this question.
 
 
 

@@ -6,12 +6,12 @@ tags: [dataviz, geopandas, hvplot, holoviews, tweet, sentiment analysis, park, S
 excerpt: "Parks & open spaces and user sentiment: A case study of San Francisco using Twitter data"
 folium-loader:
   folium-chart-1: ["charts/local_tweet_heat_map.html", "400"]
-  folium-chart-2: ["charts/positive_count_in_outside_park.html", "400"]
-  folium-chart-3: ["charts/negative_count_in_outside_park.html", "400"]
-  folium-chart-4: ["charts/polarity_in_outside_park.html", "400"]
-  folium-chart-5: ["charts/subjectivity_in_outside_park.html", "400"]
-  folium-chart-6: ["charts/by_time_polarity_in_outside_park.html", "400"]
-  folium-chart-7: ["charts/by_time_subjectivity_in_outside_park.html", "400"]
+  folium-chart-2: ["charts/positive_count_in_outside_park.html", "200"]
+  folium-chart-3: ["charts/negative_count_in_outside_park.html", "200"]
+  folium-chart-4: ["charts/polarity_in_outside_park.html", "200"]
+  folium-chart-5: ["charts/subjectivity_in_outside_park.html", "200"]
+  folium-chart-6: ["charts/by_time_polarity_in_outside_park.html", "200"]
+  folium-chart-7: ["charts/by_time_subjectivity_in_outside_park.html", "200"]
   folium-chart-8: ["charts/negative_tweet_heat_map.html", "400"]
   folium-chart-9: ["charts/very_positive_tweet_heat_map.html", "400"]
 
@@ -106,16 +106,30 @@ Subjectivity of tweets inside and outside parks from 9am to 6pm
 <div id="folium-chart-7"></div>
 
 ## Summary and discussions
+* Major findings: 
++ In park, people tend to
+  - post longer tweets;
+  - post more positive words and fewer negative words.
+- Tweets in civic spaces/ libraries are even more positive than tweets in neighborhood parks and mini parks.
+- Tweets in parks are even more positive in early morning, early afternoon, and at dusk.
 
+* Findings of "no-finding": 
+- Consistent sentiment difference among different types of park is not found.
+- Substantial sentiment variation across time of day is not found.
+- Correlation between park score and sentiment is not found.
 
+To dive deeper into the question I raised at the beginning "are people more positive when they are in parks compared to when they are not?", more extensive data is certainly needed. Higher volume of tweets should be collected across different days of week and different months of year. Moreover, given this is only a preliminary attempt, theoretical review of the use of tweets as indicator of spatiotemporal public expressed sentiment is also required for more solid analysis.
 
-Further study using more extensive data and theoretical review of the use of tweets as indicator of spatiotemporal public expressed sentiment are required to dive deeper into this question.
+Thanks for reading :) Feel free to leave me comments on my Github page https://github.com/HeZHANG0 . 
 
 
 
 ## Reference
 Hu, Minqing, and Bing Liu. "Mining and summarizing customer reviews." Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining. ACM, 2004.
+
 Schwartz, Aaron J., et al. "Visitors to urban greenspace have higher sentiment and lower negativity on Twitter." People and Nature (2019).
+
 Plunz, Richard A., et al. "Twitter sentiment in New York City parks as measure of well-being." Landscape and Urban Planning 189 (2019): 235-246.
+
 Lim, Kwan Hui, et al. "The grass is greener on the other side: Understanding the effects of green spaces on Twitter user sentiments." Companion Proceedings of the The Web Conference 2018. International World Wide Web Conferences Steering Committee, 2018.
 

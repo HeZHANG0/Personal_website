@@ -15,8 +15,17 @@ As a trailer of this analysis, below the GIF shows in-park tweet sentiment by ti
 ![tweet_sentiment]({{ site.url }}{{ site.baseurl }}/charts/tweet_sentiment.gif)
 
 ## Data Collection
+### Tweets
+I collected geo-located tweets by real-time streaming, and added a filtering condition of a coordinate bounding box as a proxy to San Francisco boundary. I streamed tweets from 9am to 6pm Pacific Time on Dec. 14th (Sat.) and Dec. 15th (Sun.) and collected in total 30886 tweets with geographical location. For every tweet, I extracted information of user id, user location, text (extended tweet if available), latitude, longitude, place type, posting time. 
 
+![bounding_box]({{ site.url }}{{ site.baseurl }}/charts/bounding_box.png)
 
+To better obtain an understanding of the relation between parks and local resident well-being, I focused on local residents instead of tourists who could tend to express more positive sentiment on their vacation. After filtering by a tighter bound for the city, a strict 9am-6pm time window, and local user location (San Francisco or CA), I had 6833 tweets for analysis. Then I cleaned up the texts by removing URLs, @users, and hashtags. Finally, I tokenized the tweets and removed punctuations and stop words for later analysis.
+
+### Parks
+I obtained the park geometry, park score, and city boundary data from the open data portal DataSF. I aggregated the park type to 4 categories: neighborhood park, regional park, civic or library, mini park. 
+
+![sf_parks]({{ site.url }}{{ site.baseurl }}/charts/sf_parks.png)
 
 ## Exploratory analysis
 
@@ -25,11 +34,7 @@ As a trailer of this analysis, below the GIF shows in-park tweet sentiment by ti
 ## Summary and discussions
 
 
-## Abandoned Cars
 
-Below, we show the distance between residential sales and the average distance to the 5 nearest 311 calls for abandoned cars.
-
-![distances-abandoned-cars]({{ site.url }}{{ site.baseurl }}/assets/images/distance_to_abandoned_cars.png)
 
 ## Reference
 Hu, Minqing, and Bing Liu. "Mining and summarizing customer reviews." Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining. ACM, 2004.

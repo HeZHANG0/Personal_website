@@ -10,6 +10,8 @@ folium-loader:
   folium-chart-3: ["charts/negative_count_in_outside_park.html", "400"]
   folium-chart-4: ["charts/polarity_in_outside_park.html", "400"]
   folium-chart-5: ["charts/subjectivity_in_outside_park.html", "400"]
+  folium-chart-6: ["charts/by_time_polarity_in_outside_park.html", "400"]
+  folium-chart-7: ["charts/by_time_subjectivity_in_outside_park.html", "400"]
 
 custom-css-list:
   - "assets/css/leaflet.timedimension.control.min.css"
@@ -44,12 +46,13 @@ Where do people tweet:
 I classified “in-park” tweets by spatially joining park information to the tweets . In this way, 2093 tweets were classified as “in-park”.
 
 ### Twitter text EDA
-![word_cloud]({{ site.url }}{{ site.baseurl }}/charts/word_cloud.png)
+
+![word_cloud]({{ site.url }}{{ site.baseurl }}/charts/word_cloud_in_park.png)
 Word cloud of in-park tweets
 
 Tweets inside parks are found to be longer than tweets outside parks, which is statistically significant at level of 0.05. On average, an in-park tweet has 12 words, while an outside-park tweet has 8 words. Moreover, word frequency analysis shows that residents are mostly tweeting “San Francisco” and “CA” in parks. Other frequent words include “like”, “see”, “place”, and etc. 
 
-![word_count]({{ site.url }}{{ site.baseurl }}/charts/word_count.png)
+![word_count]({{ site.url }}{{ site.baseurl }}/charts/word_count_in_park.png)
 
 ## Sentiment analysis
 
@@ -72,8 +75,20 @@ Histogram of subjectivity inside and outside parks:
 <div id="folium-chart-5"></div>
 
 ### Testing in-park and outside-park difference
+T-test: on average, a tweet in parks has 0.05 more and 0.24 less negative words than one outside parks; an in-park tweet has a polarity 0.028 higher than an outside-park tweet and a subjectivity 0.078 lower. All results above are statistically significant and level of 0.05.
+
+It's worth noting that this pattern persists despite that in-park tweets are 4 words longer than outside-park tweets on average. Therefore, people particularly tweet less negative words in parks.
 
 ### Testing park type difference
+
+
+### Time variance of sentiment
+A roughly fluctuant pattern shows up that in-park tweets posted in early morning, at noon, and at dusk are more positive. This pattern is consistent with that of tweets outside parks. The pattern of subjectivity is less clear. 
+Figure: polarity of tweets inside and outside parks from 9am to 6pm
+<div id="folium-chart-6"></div>
+
+Figure: subjectivity of tweets inside and outside parks from 9am to 6pm
+<div id="folium-chart-7"></div>
 
 ## Summary and discussions
 

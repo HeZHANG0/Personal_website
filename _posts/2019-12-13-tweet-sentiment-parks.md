@@ -42,9 +42,6 @@ I obtained the park geometry, park score, and city boundary data from the open d
 ### Classify in-park and outside-park tweets
 Where do people tweet:
 <div id="folium-chart-1"></div>
-4/ Embed it in a page of your website. This is done using an iframe in your html code:
-<iframe width="400" src="charts/negative_count_in_outside_park.html" frameborder="40"></iframe>
-
 I classified “in-park” tweets by spatially joining park information to the tweets . In this way, 2093 tweets were classified as “in-park”.
 
 ### Twitter text EDA

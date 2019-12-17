@@ -49,7 +49,7 @@ I classified “in-park” tweets by spatially joining park information to the t
 ![word_cloud]({{ site.url }}{{ site.baseurl }}/charts/word_cloud_in_park.png)
 Word cloud of in-park tweets
 
-Tweets inside parks are found to be longer than tweets outside parks, which is statistically significant at level of 0.05. On average, an in-park tweet has 12 words, while an outside-park tweet has 8 words. Moreover, word frequency analysis shows that residents are mostly tweeting “San Francisco” and “CA” in parks. Other frequent words include “like”, “see”, “place”, and etc. 
+Tweets inside parks are found to be longer than tweets outside parks, which is statistically significant at level of 0.05. On average, an in-park tweet has 10.4 words, while an outside-park tweet has 8.8 words. Moreover, word frequency analysis shows that residents are mostly tweeting “San Francisco” and “CA” in parks. Other frequent words include “avenue”, “see”, "2019",and etc. 
 
 Most frequent words in in-park tweets:
 ![word_count]({{ site.url }}{{ site.baseurl }}/charts/word_count_in_park.png)
@@ -84,22 +84,21 @@ Heatmap of top 50% positive(polarity>0) tweets:
 <div id="folium-chart-9"></div>
 
 ### Testing in-park and outside-park difference
-T-test: on average, a tweet in parks has 0.05 more and 0.24 less negative words than one outside parks; an in-park tweet has a polarity 0.028 higher than an outside-park tweet and a subjectivity 0.078 lower. All results above are statistically significant and level of 0.05.
+T-test: on average, a tweet in parks has 0.26 less negative words than one outside parks, this difference is statistically significant and level of 0.05.
 
-It's worth noting that this pattern persists despite that in-park tweets are 4 words longer than outside-park tweets on average. Therefore, people particularly tweet less negative words in parks.
+It's worth noting that this pattern persists despite that in-park tweets are 1.6 words longer than outside-park tweets on average. Therefore, people particularly tweet less negative words in parks.
 
 Table: t-test result
 ![t_table]({{ site.url }}{{ site.baseurl }}/charts/t_table.PNG)
 
 ### Testing park type difference
-There are four aggregated park types: neighborhood park, mini park, civic or library, and regional park. I tested the sentiment statistics against the types and hardly found difference at the level of 0.05. The most obvious result is that tweets in civic space or libraries have more positive words than tweets in mini parks or neighborhood parks, but there is no significant difference between “civic space or libraries” and regional parks. Therefore, residents could enjoy better well-being in civic space or libraries than mini parks or neighborhood parks. 
-
-Pairwise comparison of tweet positive word count across park types
-![anova_positive_count]({{ site.url }}{{ site.baseurl }}/charts/anova_positive_count.PNG)
+There are four aggregated park types: neighborhood park, mini park, civic or library, and regional park. I tested the sentiment statistics against the types using ANOVA, but hardly found difference at the level of 0.05.
 
 ### Time variance of sentiment
 A roughly fluctuant pattern shows up that in-park tweets posted in early morning, early afternoon, and at dusk are more positive. This pattern is consistent with that of tweets outside parks. The pattern of subjectivity is less clear. 
+
 Polarity of tweets inside and outside parks from 9am to 6pm
+
 <div id="folium-chart-6"></div>
 
 Subjectivity of tweets inside and outside parks from 9am to 6pm
@@ -109,9 +108,7 @@ Subjectivity of tweets inside and outside parks from 9am to 6pm
 Major findings: 
 * In park, people tend to
   - post longer tweets;
-  - post more positive words and fewer negative words.
-- Tweets in civic spaces/ libraries are even more positive than tweets in neighborhood parks and mini parks.
-- Tweets in parks are even more positive in early morning, early afternoon, and at dusk.
+  - post fewer negative words although they post longer tweets.
 
 Findings of "no-finding": 
 * Consistent sentiment difference among different types of park is not found.

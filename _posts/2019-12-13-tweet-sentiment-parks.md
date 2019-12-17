@@ -18,7 +18,7 @@ toc: true
 toc_sticky: true
 ---
 
-Parks and open spaces (referred to as parks below) in cities are believed to have benefits on well-being of city residents. This exploratory project uses real-time streaming twitter data to correlate quantified sentiment inside/outside parks in San Francisco. It tries to answer the question: are people more positive when they are in parks compared to when they are not? Specifically, are people expressing more positively through Twitter when they are visiting parks? The result of this preliminary study answers “Yes” to this question. 
+Parks and open spaces (referred to as parks below) in cities are believed to have benefits on well-being of city residents. This exploratory project uses real-time streaming twitter data to correlate quantified sentiment inside/outside parks in San Francisco. It tries to answer the question: are people more positive when they are in parks compared to when they are not? Specifically, are people expressing more positively through Twitter when they are visiting parks? The result of this preliminary study provides some evidence to a possible "yes" to the question. 
 
 As a trailer of this analysis, below the GIF shows in-park tweet sentiment by time of day on a weekend in San Francisco:
 

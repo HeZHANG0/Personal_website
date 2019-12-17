@@ -4,14 +4,15 @@ date: 2019-12-13
 published: true
 tags: [dataviz, geopandas, hvplot, holoviews, tweet, sentiment analysis, park, San Francisco]
 excerpt: "Parks & open spaces and user sentiment: A case study of San Francisco using Twitter data"
+hv-loader:
+  folium-chart-2: "charts/positive_count_in_outside_park.html"
+  folium-chart-3: "charts/negative_count_in_outside_park.html"
+  folium-chart-4: "charts/polarity_in_outside_park.html"
+  folium-chart-5: "charts/subjectivity_in_outside_park.html"
+  folium-chart-6: "charts/by_time_polarity_in_outside_park.html"
+  folium-chart-7: "charts/by_time_subjectivity_in_outside_park.html"
 folium-loader:
   folium-chart-1: ["charts/local_tweet_heat_map.html", "400"]
-  folium-chart-2: ["charts/positive_count_in_outside_park.html","800"]
-  folium-chart-3: ["charts/negative_count_in_outside_park.html", "800"]
-  folium-chart-4: ["charts/polarity_in_outside_park.html", "800"]
-  folium-chart-5: ["charts/subjectivity_in_outside_park.html", "800"]
-  folium-chart-6: ["charts/by_time_polarity_in_outside_park.html", "800"]
-  folium-chart-7: ["charts/by_time_subjectivity_in_outside_park.html", "800"]
   folium-chart-8: ["charts/negative_tweet_heat_map.html", "400"]
   folium-chart-9: ["charts/very_positive_tweet_heat_map.html", "400"]
 toc: true

@@ -285,12 +285,3 @@ defaults:
       comments: # true
       share: true
       related: true
-   # _pages
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-
-permalink: /2019-04-29-predict-housing-price/

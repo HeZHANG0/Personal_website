@@ -2,6 +2,8 @@
 title: "Automatic Essay Grading -- Using BERT Embedding, LSTM, and Features, and PCA"
 date: 2019-12-19
 published: true
+categories:
+  - blog
 tags: [pre-trained BERT, LSTM, NLP, Machine Learning]
 excerpt: "Automatic Essay Grading -- Using BERT Embedding, LSTM, and Features, and PCA"
 toc: true

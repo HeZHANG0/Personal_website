@@ -292,3 +292,5 @@ defaults:
     values:
       layout: single
       author_profile: true
+
+permalink: /2019-04-29-predict-housing-price/

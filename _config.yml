@@ -157,6 +157,7 @@ include:
   - .htaccess
   - _pages
   - altair
+  - ["pages"]
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -284,3 +285,10 @@ defaults:
       comments: # true
       share: true
       related: true
+   # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true

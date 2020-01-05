@@ -157,7 +157,7 @@ include:
   - .htaccess
   - _pages
   - altair
-  - ["pages"]
+include: ["_pages"]
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"

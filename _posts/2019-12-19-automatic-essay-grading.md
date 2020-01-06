@@ -24,9 +24,11 @@ We looked into the metrics to evaluate essays. Based on the rubric guidelines av
 - grammar accuracy. 
 
 ![word_cloud_best]({{ site.url }}{{ site.baseurl }}/assets/essay_grading/word_clout_best.png)
+
 Word cloud from the rubrics for the highest score.
 
 ![word_cloud_second_best]({{ site.url }}{{ site.baseurl }}/assets/essay_grading/word_clout_second_best.png)
+
 Word cloud from the rubrics for the second highest score.
 
 ## Data
@@ -35,6 +37,7 @@ We used the data available on Kaggle.com, the public Automated Student Assessmen
 ## Model Structure
 
 ![Model_Structure]({{ site.url }}{{ site.baseurl }}/assets/essay_grading/Model_Structure.png)
+
 Two-stage model structure
 
 To develop the model, we combined the advantages of feature-based method and end-to-end method based on Bert embedding. We took two steps to achieve the goal, referencing to the model structure proposed in (Liu, J., Xu, Y., & Zhao, L, 2019). We modified the structure by implementing Bi-directional LSTM in the first stage, as well as adding principal components as predictors from PCA in the second stage. These changes are supposed to capture more meaningful information of the essays.  
@@ -44,6 +47,7 @@ At the first stage, we calculated three scores including semantic score, coheren
 2. using bi-directional LSTM neural network.
 
 ![LSTM_model]({{ site.url }}{{ site.baseurl }}/assets/essay_grading/LSTM_model.png)
+
 LSTM model structure
 
 At the second stage, we extracted following features from processed essays (stop words and symbols removed): average word length and word length standard deviation, average sentence length and sentence length deviation, grammar error count, and spelling count. We also used Principal Component Analysis (PCA) to generate components for each essay from theirs’ densed TF-IDF representations. We use 5-fold cross validation method to decide the number of components to use. Then, by computing the cosine similarity score of each essay and its corresponding prompt’s components, we got a handcrafted prompt-essay relevance score for each essay.
@@ -53,6 +57,7 @@ Finally, we concatenate these three scores with some handcrafted features, and t
 ## Results
 
 ![model_results]({{ site.url }}{{ site.baseurl }}/assets/essay_grading/model_results.png)
+
 Model results
 
 As shown in the result table, we conducted XGBoost classification using different combina-tions of the features we had at Stage II. The least expressive model using only the handcraft statistical features only achieved over-all a 0.59 Kappa score. Adding PCs to the model significantly improved the overall performance, which is similar to the performance of only using the three scores calculated from the first stage. This preliminarily indicates good predicting power of the end-to-end method. Next, we run the full two-stage model and boosted the overall per-formance to a 0.74 Kappa score. We also tried removing the PCs from the predicting variables, but the overall score was hardly changed. The little change could be due to that the PCs encoded similar information as the three scores. Our final choice was the two-stage model without PCs, which out-performed the other models. 
@@ -60,12 +65,15 @@ As shown in the result table, we conducted XGBoost classification using differen
 ## Discussion and Error Analysis
 
 ![acc_stageI]({{ site.url }}{{ site.baseurl }}/assets/essay_grading/acc_stageI.png)
+
 Model performance on 8 prompts: stage I scores only
 
 ![acc_stageII]({{ site.url }}{{ site.baseurl }}/assets/essay_grading/acc_stageII.png)
+
 Model performance on 8 prompts: stage II features only
 
 ![acc_stageII]({{ site.url }}{{ site.baseurl }}/assets/essay_grading/acc_stageII.png)
+
 Model performance on 8 prompts: two-stage model
 
 We find our model perform differently on differ-ent prompts. It performs best on prompt 5,6,7 and worst on prompt 8. Prompt 8 set has an average length of 650 words, so it proves a hard task for our model to grade long essays. For some prompts (2,5,6,7), the three scores outperformed the features for prediction, while others vice ver-sa. Therefore, the overall model performs best with the essay sets that can be well captured by the three scores. 

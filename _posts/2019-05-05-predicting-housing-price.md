@@ -168,7 +168,7 @@ The top continuous variables correlated with Sale Price:
 `TotalBsmtSF`   0.612133975
 
 
-```{r,eval=T,echo=FALSE, warning=FALSE}
+```{r}
 cor<- correlation(data)
 plot(cor)
 ```
@@ -177,7 +177,7 @@ plot(cor)
 Correlation matrix of continuous variables
 
 
-```{r,eval=T,echo=FALSE, warning=FALSE}
+```{r}
 plotData<- data%>%filter(!is.na(LogSalePrice))
 plotData <-melt(cor(plotData[sapply(data, is.numeric)]))
 ggplot(plotData ,
@@ -231,7 +231,7 @@ The OOB error is 0.003064511 and the testing error is 0.0219367 Testing error is
 
 After trying different tuning parameter, we get n.trees = 20000, interaction.depth = 2, cv.folds = 5 for minimizing the training error. 
 
-```{r,eval=T,echo=T,results='hide'}
+```{r}
 fit_boosting <- gbm(
   formula = LogSalePrice~.,
   distribution = "gaussian",

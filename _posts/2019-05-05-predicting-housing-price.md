@@ -75,6 +75,7 @@ So far, all missing values have been imputed.
 
 ### Variable structures
 We now need to make sure that all categorical and numeric variables have the correct structures. We turned MSSubClass, MoSold, YrSold into factors. OverallQual and OverallCond can be wither factor or numeric, as they are ordinal. Here we keep them as numeric for now.
+
 ```{r,eval=T,echo=FALSE,results='hide'}
 str(data)
 data$MSSubClass<- as.factor(data$MSSubClass)
@@ -166,6 +167,7 @@ The top continuous variables correlated with Sale Price:
 
 `TotalBsmtSF`   0.612133975
 
+
 ```{r,eval=T,echo=FALSE, warning=FALSE}
 cor<- correlation(data)
 plot(cor)
@@ -173,6 +175,7 @@ plot(cor)
 
 ![correlation]({{ site.url }}{{ site.baseurl }}/assets/housing/correlation.png)
 Correlation matrix of continuous variables
+
 
 ```{r,eval=T,echo=FALSE, warning=FALSE}
 plotData<- data%>%filter(!is.na(LogSalePrice))
@@ -195,17 +198,20 @@ Correlation heatmap of continuous variables
 ## Random Forest Modeling
 
 Before building the random forest model, we used the importance of random forest to see the important variables. This complements correlation analysis shows the top five important variables are `Totalsqft`, `OverallQual`, `GrLivArea`, `Neighborhood`,`age` which is similar to the elastic net model analysis. 
-```{r,eval=T,echo=FALSE,results='hide'}
+
+```{r}
 data1 <- data[!is.na(data$LogSalePrice),]
 eda.rf<- randomForest(LogSalePrice~., data1, mtry=25, ntree=500,importance=TRUE)
 imp_RF <- data.frame(eda.rf$importance)
 imp_RF <- imp_RF[order(imp_RF$X.IncMSE, decreasing = TRUE),]
 setDT(imp_RF, keep.rownames = TRUE)[]
 ```
-```{r,eval=T,echo=FALSE, warning=FALSE}
+
+```{r}
 ggplot(imp_RF[1:20,], aes(x=reorder(rn, X.IncMSE),y=X.IncMSE,fill="#D48B6A")) + 
   geom_bar(stat = 'identity') + labs(x = 'Variables', y= '% increase MSE if variable is randomly permuted') + coord_flip() + theme(legend.position="none")
 ```
+
 ![random_forest]({{ site.url }}{{ site.baseurl }}/assets/housing/random_forest.png)
 
 We used the training data set to build our random forest model using randomForest() functiom. We tune ntree and mtry, the two parameters of random forest.From the error ntree plot, we may need at least 100 trees to settle the OOB testing errors, so 500 trees are enough here. Now we fix ntree=500, We only want to compare the OOB mse[500] to see the mtry effects. Here we loopmtry from 1 to 30 and return the testing OOB errors. 
@@ -224,6 +230,7 @@ The OOB error is 0.003064511 and the testing error is 0.0219367 Testing error is
 ## Boosting tree
 
 After trying different tuning parameter, we get n.trees = 20000, interaction.depth = 2, cv.folds = 5 for minimizing the training error. 
+
 ```{r,eval=T,echo=T,results='hide'}
 fit_boosting <- gbm(
   formula = LogSalePrice~.,
@@ -245,6 +252,7 @@ The boosting tree model gives us the cross-validation error to be 0.02045268, th
 ## LASSO/Elastic Net
 
 After modifying the data set, an elastic net was used to reduce dimensionality. 
+
 ```{r,eval=T,echo=FALSE,results='hide'}
 set.seed(101)
 x <- model.matrix(LogSalePrice~., data=data1)[, -1]
@@ -261,6 +269,7 @@ dim(x_train)
 ```
 
 Ridge regression doesn't cut any variable, but it gives us unique solutions. LASSO estimation can give us a smaller model for the ease of interpretaion. Elastic Net combines Ridge Regression and LASSO, by choosing alpha between 0 and 1. so that it will do feature selection, yet still benefit from Ridge Regression. First, we use the following plot to choose the alpha. The plot describes how mse changes with alpha. However, the plot is random here because mse depends on the split of nfolds. We run it several times and find that mse is always low at alpha=0.9. What's more, there is no big differences of mse for different alpha, so we stick with it in the following analysis.
+
 ```{r,eval=T,echo=FALSE}
 #alpha
 alpha<- seq(0,1,0.1)
@@ -279,6 +288,7 @@ lines(table$alpha,table$MSE)
 ![MSE_alpha.png]({{ site.url }}{{ site.baseurl }}/assets/housing/MSE_alpha.png)
 
 We use cross validation to select the lambda. From this plot we show that as ?? ??? ???, the impact of the shrinkage penalty grows, and the coefficient estimates will approach zero. To have a parsimonious model, we decide to use lambda.1se in our elastic net, which give us 54 variales in our final model. (We also try lambda.min and discuss the results in the appendix.)
+
 ```{r,eval=T,echo=FALSE}
 fit.fl.cv <- cv.glmnet(x_train, y_train,alpha=0.9, nfolds=10 ) 
 plot(fit.fl.cv)

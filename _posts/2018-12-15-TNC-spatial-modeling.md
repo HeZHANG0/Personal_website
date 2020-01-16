@@ -1,5 +1,5 @@
 ---
-title: "The Spatial Patterns and the Determinants of Uber Lyft Pick-up & Drop-off  Frequency in San Francisco."
+title: "The Spatial Patterns and the Determinants of Uber Lyft demand in San Francisco."
 date: 2018-12-15
 published: true
 tags: [TNC, Built environment, Spatial autocorrelation, GWR, Python, ArcGIS]

@@ -2,7 +2,7 @@
 title: "The Spatial Patterns and the Determinants of Uber Lyft demand in San Francisco."
 date: 2018-12-15
 published: true
-tags: [TNC, Built environment, Spatial autocorrelation, GWR, Python, ArcGIS]
+tags: [TNC, Built environment, Spatial autocorrelation, Geographically weighted regression, Python, ArcGIS]
 excerpt: "What are the spatial and temporal variations of TNC activities in San Francisco? Are land use, socio-economics, and transit at TAZ level related to TNC activity frequency?"
 toc: true
 toc_sticky: true

@@ -2,7 +2,7 @@
 title: "Parks & open spaces and user sentiment: A case study of San Francisco using Twitter data"
 date: 2019-12-13
 published: true
-tags: [dataviz, geopandas, hvplot, holoviews, tweet, sentiment analysis, park, San Francisco]
+tags: [dataviz, geopandas, hvplot, holoviews, tweet, sentiment analysis, park, San Francisco, Python]
 excerpt: "Parks & open spaces and user sentiment: A case study of San Francisco using Twitter data"
 hv-loader:
   folium-chart-2: "charts/positive_count_in_outside_park.html"

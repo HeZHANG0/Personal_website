@@ -2,7 +2,7 @@
 title: "Predicting housing price using advanced regression"
 date: 2019-05-05
 published: true
-tags: [Advanced regression, housing price, elastic net, random forest, boosting, predictive modeling]
+tags: [Advanced regression, housing price, elastic net, random forest, boosting, predictive modeling, R]
 excerpt: "Predicting housing price using advanced regression"
 toc: true
 toc_sticky: true

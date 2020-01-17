@@ -1,6 +1,6 @@
 ---
 title: "Regional Commute Atlas: NY-NJ-CT-PA Commuters Working in Manhattan and Other Key Business Districts"
-date: 2018-12-15
+date: 2020-01-15
 published: true
 tags: [CTPP, regional commute, data visualization, web app, ArcGIS Pro, JavaScript, html]
 excerpt: "Regional Commute Atlas: NY-NJ-CT-PA Commuters Working in Manhattan and Other Key Business Districts (TRB presentation)"

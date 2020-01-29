@@ -1,12 +1,14 @@
 ---
-title: "Who Cycles to Work and Where? A Comparative Microdata Analysis of Urban Commuters in the United States and Mexico"
+title: "Who Cycles to Work and Where? A Microdata Analysis of the US and Mexico"
 date: 2020-01-15
 published: true
-tags: [Cycling, microdata, urban form, random effect model, R]
+tags: [Cycling, microdata, urban form, multi-level model, logistic regression, R]
 excerpt: "Who Cycles to Work and Where?: A Comparative Microdata Analysis of Urban Commuters in the United States and Mexico  (TRB presentation)"
 toc: true
 toc_sticky: true
 ---
+
+Who Cycles to Work and Where? A Comparative Microdata Analysis of Urban Commuters in the United States and Mexico.
 
 This is a research project I did with professor Erick Guerra and other graduate research assistants at the University of Pennsylvania. Please view the poster presented at TRB 2020 [here](https://github.com/HeZHANG0/HZ/raw/master/assets/pdf/Cycling%20paper%20poster%20TRB%200111.pdf).
 

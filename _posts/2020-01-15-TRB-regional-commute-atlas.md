@@ -1,5 +1,5 @@
 ---
-title: "Regional Commute Atlas: NY-NJ-CT-PA Commuters Working in Manhattan and Other Key Business Districts"
+title: "NY-NJ-CT-PA Regional Commute Atlas: A Web App"
 date: 2020-01-15
 published: true
 tags: [CTPP, regional commute, data visualization, web app, ArcGIS Pro, JavaScript, html]
@@ -7,6 +7,8 @@ excerpt: "Regional Commute Atlas: NY-NJ-CT-PA Commuters Working in Manhattan and
 toc: true
 toc_sticky: true
 ---
+
+Regional Commute Atlas: NY-NJ-CT-PA Commuters Working in Manhattan and Other Key Business Districts
 
 This poster shows the "regional commute atlas" project I did during my summer internship at the Port Authority of NY & NJ. Please view the poster [here](https://github.com/HeZHANG0/HZ/raw/master/assets/pdf/TRB_Regional%20Commute%20Atlas.pdf).
 

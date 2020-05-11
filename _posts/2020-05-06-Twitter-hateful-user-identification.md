@@ -46,18 +46,18 @@ We have an unimbalabced dataset here. Among the 4971 users, 544 are 'hateful' an
 
 For the train/test data split, I used 0.7/0.3 for the first two models. For the GCN models, given its properties and referenced best practice, I used 0.15/0.85 split. Therefore, the GCN models will require much fewer training samples than the other methods.
 
-## Build a model on user, tweet, and graph features
+## Logistic regression: build a model on features
 I first built a logistic regression model on manually engineered features that cover information of the users, their tweets, and their characteristics in the network. It achieves a pretty high testing accuracy of 0.928, and a high AUC value of 0.965. The precision is 0.715 and the recall is 0.571, yielding a F1 score of 0.635. Therefore, although it achieves an overall good performance, it tends to predict less positive values and is less effective in recalling the hateful cases. The ROC curve of the model is shown below:
 
 ![ROC-logistic]({{ site.url }}{{ site.baseurl }}/assets/twitter/ROC-logistic.png)
 
-## Build a model directly on tweet embedding
+## Neural network: build a model directly on tweet embedding
 The second attempt was to directly learn an end-to-end model using the GloVe embedding, which I purposely left out in the logistic regression model. I employed a simple neural network, shown as below. It achieves a testing accuracy of 0.850 and an AUC of 0.913. The precision is 0.406; the recall is 0.810, and the F1 score is 0.541. Compared to the logistic regression model, the NN model has a notably lower precision but higher recall. In other words, it recalls more hateful users at the expense of mistaking normal users for hateful ones. The ROC curves of the first two models are shown below:
 
 ![ROC_NN]({{ site.url }}{{ site.baseurl }}/assets/twitter/ROC_NN.png)
 
 
-## Build models on user & tweet features, and the network graph
+## Graph deep learning: build models onfeatures and the network graph
 Making use of the newly established Graph Convolutional Network models, I further built three models: GraphSAGE, GCN, and GAT. These models directly learn from the network graph as well as the node (user) features. Unlike the logistic regression training, I didn't feed hand-crafted graph features to these models. I also decrease the user and tweet features in these models, to test their capabilities to learn directly from the graph.
 
 The GraphSAGE model, which is the state-of-the-art model, performs the best. The model structure is shown below. It achieves a testing accuracy of 0.855, AUC of 0.936, precision of 0.419, recall of 0.897, and F1 of 0.571. The high recall of the model stands out, which is a key metric for imbalanced-data scenarios.

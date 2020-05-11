@@ -57,7 +57,7 @@ The second attempt was to directly learn an end-to-end model using the GloVe emb
 ![ROC_NN]({{ site.url }}{{ site.baseurl }}/assets/twitter/ROC_NN.png)
 
 
-## Graph deep learning: build models onfeatures and the network graph
+## Graph deep learning: build models on features and the network graph
 Making use of the newly established Graph Convolutional Network models, I further built three models: GraphSAGE, GCN, and GAT. These models directly learn from the network graph as well as the node (user) features. Unlike the logistic regression training, I didn't feed hand-crafted graph features to these models. I also decrease the user and tweet features in these models, to test their capabilities to learn directly from the graph.
 
 The GraphSAGE model, which is the state-of-the-art model, performs the best. The model structure is shown below. It achieves a testing accuracy of 0.855, AUC of 0.936, precision of 0.419, recall of 0.897, and F1 of 0.571. The high recall of the model stands out, which is a key metric for imbalanced-data scenarios.
